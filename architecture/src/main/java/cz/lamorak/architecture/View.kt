@@ -45,5 +45,5 @@ interface View<Intent : ViewIntent, State : ViewState, Action : ViewAction> {
     fun display(state: State)
     fun handle(action: Action)
 
-    fun Observable<Any>.asIntent(mapper: (Any) -> Intent): Disposable = map(mapper).subscribe(intentRelay)
+    fun <T> Observable<T>.asIntent(mapper: (T) -> Intent): Disposable = map(mapper).subscribe(intentRelay)
 }
